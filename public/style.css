@@ -1,0 +1,456 @@
+:root {
+    --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    --instagram-blue: #0095f6;
+    --instagram-light: #fafafa;
+    --instagram-border: #dbdbdb;
+    --instagram-text: #262626;
+    --instagram-gray: #8e8e8e;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fafafa 0%, #f5f9ff 100%);
+    color: var(--instagram-text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1.5rem 0;
+    margin: 0;
+    background: var(--instagram-gradient);
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  h1::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--instagram-gradient);
+    opacity: 0.4;
+    filter: blur(6px);
+  }
+  
+  #loginSection {
+    max-width: 380px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: white;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.9);
+    margin-top: 160px;
+  }
+  
+  #loginSection:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  }
+  
+  #loginSection h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
+    color: var(--instagram-text);
+    position: relative;
+    letter-spacing: -0.5px;
+  }
+  
+  #loginSection h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--instagram-gradient);
+    margin: 1rem auto 0;
+    border-radius: 4px;
+    opacity: 0.8;
+  }
+  
+  #usernameInput {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--instagram-border);
+    border-radius: 12px;
+    background-color: rgba(250,250,250,0.8);
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
+  }
+  
+  #usernameInput:focus {
+    border-color: #b2dffc;
+    box-shadow: 0 0 0 3px rgba(0, 149, 246, 0.15);
+    outline: none;
+    background-color: white;
+  }
+  
+  #loginButton {
+    width: 100%;
+    padding: 1rem;
+    background: var(--instagram-gradient);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #loginButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  #loginButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(220, 39, 67, 0.4);
+  }
+  
+  #loginButton:hover::before {
+    left: 100%;
+  }
+  
+  #chatSection {
+    max-width: 650px;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 20px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.3);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+  
+  #chatSection:hover {
+    transform: scale(1.005);
+  }
+  
+  #usuariosOnline {
+    padding: 0.6rem 1rem; 
+    margin: 0;
+    border-bottom: 1px solid rgba(219,219,219,0.5);
+    font-size:17px;
+    display: flex;
+    border: 0;
+    justify-content: center; 
+    align-items: center;
+    font-weight: 500;
+  }
+  
+  #usuariosOnline::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  #mensagens {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    margin: 0;
+    list-style-type: none;
+    background: linear-gradient(to bottom, #fafafa, #f5f9ff);
+    background-attachment: local;
+    scroll-behavior: smooth;
+  }
+  
+  #mensagens::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #mensagens::-webkit-scrollbar-track {
+    background: rgba(239,239,239,0.5);
+    border-radius: 10px;
+  }
+  
+  #mensagens::-webkit-scrollbar-thumb {
+    background: var(--instagram-gradient);
+    border-radius: 10px;
+    background-size: 200%;
+    animation: gradientScroll 3s ease infinite;
+  }
+  
+  @keyframes gradientScroll {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  #mensagens li {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem; /* um pouco menor */
+    border-radius: 20px;
+    max-width: 60%; /* era 75%, agora ocupa menos espaço horizontal */
+    word-wrap: break-word;
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.4s forwards;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  #mensagens li:not(.own-message) {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid rgba(239,239,239,0.8);
+    margin-right: 15%;
+  }
+  
+  #mensagens li:not(.own-message)::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    border-right: 1px solid rgba(239,239,239,0.8);
+    border-bottom: 1px solid rgba(239,239,239,0.8);
+    z-index: -1;
+  }
+  
+  #mensagens li.own-message {
+    align-self: flex-end;
+    background: var(--instagram-gradient);
+    color: white;
+    margin-left: 15%;
+  }
+  
+  #mensagens li.own-message b {
+    color: white !important;
+    background: transparent !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+  }
+  
+  #mensagens li.own-message::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    background: var(--instagram-gradient);
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+  
+  #mensagens li b {
+    font-weight: 600;
+    background: var(--instagram-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+  }
+  
+  #chatForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    border-top: 1px solid rgba(219,219,219,0.5);
+    background: white;
+    position: relative;
+    max-width: 85%;
+    margin: 0.5rem auto;
+  }
+  
+  
+  #chatForm::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), white);
+  }
+  
+  #mensagem {
+    flex: 1;
+    padding: 1rem 1.3rem;
+    border: 1px solid var(--instagram-border);
+    border-radius: 25px;
+    font-size: 0.95rem;
+    margin-right: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
+  }
+  
+  #mensagem:focus {
+    border-color: #b2dffc;
+    box-shadow: 0 0 0 3px rgba(0, 149, 246, 0.15);
+    outline: none;
+    background: white;
+  }
+  
+  #chatForm button {
+    padding: 1rem 1.5rem;
+    background: var(--instagram-gradient);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #chatForm button::after {
+    content: "→";
+    margin-left: 8px;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  #chatForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(220, 39, 67, 0.4);
+  }
+  
+  #chatForm button:hover::after {
+    transform: translateX(3px);
+  }
+  
+
+  @media (max-width: 768px) {
+    #chatSection {
+      height: 90vh;
+      border-radius: 0;
+      margin: 0;
+      max-width: 100%;
+      box-shadow: none;
+      border: none;
+    }
+    
+    h1 {
+      border-radius: 0;
+    }
+    
+    #loginSection {
+      margin: 2rem auto;
+      width: 90%;
+      padding: 1.8rem;
+    }
+    
+    #mensagens li {
+      max-width: 85%;
+    }
+  }
+  
+  @keyframes messageGlow {
+    0% { box-shadow: 0 0 0 rgba(220, 39, 67, 0); }
+    50% { box-shadow: 0 0 15px rgba(220, 39, 67, 0.3); }
+    100% { box-shadow: 0 0 0 rgba(220, 39, 67, 0); }
+  }
+  
+
+
+  #usuario {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    color:#cc2366;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    font-size: 20px;
+  }
+  
+
+  #chatBox {
+    background: white;
+    border: 1px solid var(--instagram-border);
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 800px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    height: 100%;
+  }
+
+
+.mensagem-esquerda {
+  color: #333;
+  margin-right: auto;
+  border-bottom-left-radius: 0;
+  text-align: left;
+}
+  
+.mensagem-direita {
+  align-self: flex-end;
+  margin-left: auto; 
+  color: #b90f63;
+  text-align: right;
+}
+
+
+
+  

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram - Direct</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Instagram - Direct</h1>
+    <br>
+    <span id="usuario">Você entrou no chat - <span id="username"></span></span>
+  </header>
+  <br>
+
+  <main class="chat-container">
+    <p id="usuariosOnline">Usuários online </p>
+   
+
+    <div id="chatBox">
+      <ul id="mensagens"></ul>
+
+      <form id="chatForm">
+        <input id="mensagem" placeholder="Sua mensagem" autocomplete="off" />
+        <button>Enviar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const mensagens = document.getElementById("mensagens");
+    const mensagemInput = document.getElementById("mensagem");
+    const username = sessionStorage.getItem("username");
+  
+    if (!username) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("username").textContent = username;
+      socket.emit("set username", username);
+    }
+  
+    document.getElementById("chatForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const mensagem = mensagemInput.value.trim();
+      if (mensagem) {
+        socket.emit("chat message", { nome: username, mensagem });
+        mensagemInput.value = "";
+      }
+    });
+  
+    socket.on("chat message", (dados) => {
+        const item = document.createElement("li");
+        const isOwnMessage = dados.nome === username;
+      
+        item.classList.add("mensagem");
+        item.classList.add(isOwnMessage ? "mensagem-direita" : "mensagem-esquerda");
+      
+        const nomeElement = document.createElement("b");
+        nomeElement.textContent = `${dados.nome}:`;
+      
+        const texto = document.createElement("p");
+        texto.textContent = dados.mensagem;
+      
+        item.appendChild(nomeElement);
+        item.appendChild(texto);
+      
+        mensagens.appendChild(item);
+        mensagens.scrollTop = mensagens.scrollHeight;
+      });
+      
+  </script>
+
+</body>
+</html>

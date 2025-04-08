@@ -1,0 +1,147 @@
+:root {
+    --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    --light-bg: #fafafa;
+    --border-color: #dbdbdb;
+    --text-main: #262626;
+    --text-muted: #8e8e8e;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--light-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-main);
+  }
+  
+  header {
+    background: var(--instagram-gradient);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .user {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 3rem auto;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 110px;
+  }
+  
+  .group-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .group-list li {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s, transform 0.2s ease;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .group-list li:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .group-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--instagram-gradient);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .group-avatar:hover {
+    box-shadow: 0 0 12px rgba(220, 39, 67, 0.5), 0 0 4px rgba(188, 24, 136, 0.5);
+  }
+  
+  .group-info h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-main);
+  }
+  
+  .group-info p {
+    margin: 0.2rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1.5rem 0;
+    margin: 0;
+    background: var(--instagram-gradient);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+    transition: filter 0.3s ease;
+  }
+  
+  h1:hover {
+    filter: brightness(1.05);
+    cursor: default;
+  }
+  
+  h1::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--instagram-gradient);
+    opacity: 0.4;
+    filter: blur(6px);
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      margin: 0.5rem;
+      border-radius: 10px;
+    }
+  
+    .group-avatar {
+      width: 40px;
+      height: 40px;
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Instagram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Instagram - Direct</h1>
+
+    <div id="loginSection">
+        <h2>Digite seu nome de usuário</h2>
+        <input type="text" id="usernameInput" placeholder="Nome de usuário" />
+        <button id="loginButton">Entrar</button>
+        <p id="errorMessage" style="color: red; display: none;">Por favor, insira um nome de usuário.</p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const loginSection = document.getElementById("loginSection");
+        const usernameInput = document.getElementById("usernameInput");
+        const errorMessage = document.getElementById("errorMessage");
+
+        // Verifica se o nome de usuário já está armazenado
+        let username = sessionStorage.getItem("username");
+
+        // Se já houver nome de usuário, redireciona direto para o Direct
+        if (username) {
+            socket.emit("set username", username);
+            window.location.href = "direct.html";
+        }
+
+        // Ao clicar no botão de login
+        document.getElementById("loginButton").addEventListener("click", () => {
+            username = usernameInput.value.trim();
+            if (username) {
+                sessionStorage.setItem("username", username);
+                socket.emit("set username", username);
+                window.location.href = "direct.html";
+            } else {
+                errorMessage.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
